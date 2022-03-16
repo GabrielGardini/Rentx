@@ -3,7 +3,7 @@ import { Container, Header, CarImages, Content, Details, Description, Brand, Nam
 import {BackButton} from "../../components/BackButton";
 import {StatusBar} from "react-native";
 import {ImageSlider} from "../../components/ImageSlider";
-import { Acessory} from "../../components/Acessory";
+import { Acessory} from "../../components/Accessory";
 import { Button} from "../../components/Button";
 import speedSvg from "../../assets/speed.svg";
 import accelerationSvg from "../../assets/acceleration.svg";
@@ -14,14 +14,28 @@ import peopleSvg from "../../assets/people.svg";
 import {Feather} from "@expo/vector-icons";
 import {RFValue} from "react-native-responsive-fontsize";
 import {useTheme} from "styled-components";
+import {useNavigation} from "@react-navigation/native";
 
 export function SchedulingDetails(){
     const theme= useTheme()
+    const navigation = useNavigation()
+    function handleConfirmRent(){
+        navigation.navigate('SchedulingComplete')
+    };
+
+    function handleBack(){
+        navigation.goBack();
+    }
     return(
     <Container>
-        <StatusBar translucent={false}/>
+        <StatusBar
+            barStyle={'dark-content'}
+            translucent
+            backgroundColor={'transparent'}
+
+            />
         <Header>
-            <BackButton onPress={()=>{}}/>
+            <BackButton onPress={handleBack}/>
         </Header>
         <CarImages>
             <ImageSlider imagesUrl={['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYhtdEn7lfsp84FhGMx0hRbslCDeovmTNuE-sR_7VggVwy12MzT68M_w32EetJvEO9Lho&usqp=CAU'
@@ -78,7 +92,7 @@ export function SchedulingDetails(){
             </RentalPrice>
         </Content>
         <Footer>
-            <Button title={"Confirmar"} />
+            <Button  onPress={handleConfirmRent} title={"Alugar agora"} color={theme.colors.success} />
         </Footer>
     </Container>
     );

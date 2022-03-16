@@ -18,7 +18,7 @@ export const Title = styled.Text`
   color: ${({theme})=> theme.colors.shape};
   font-family:  ${({theme})=> theme.fonts.secondary_600};
   
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 export const Message = styled.Text`
   font-size: ${RFValue(15)}px;

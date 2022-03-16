@@ -5,8 +5,13 @@ import DoneSvg from '../../assets/done.svg';
 
 import { Container, Content, Title, Message, Footer } from './styles';
 import {ConfirmButton} from "../../components/ConfirmButton";
+import {useNavigation} from "@react-navigation/native";
 
 export function SchedulingComplete(){
+    const navigation=useNavigation();
+    function handleConfirm(){
+        navigation.navigate('Home');
+    }
     const {width} = useWindowDimensions();
     return(
         <Container>
@@ -23,7 +28,7 @@ export function SchedulingComplete(){
                 <Message>Agora você só precisa ir {'\n'} até a concessionária da RENTX {'\n'} pegar seu automóvel</Message>
             </Content>
             <Footer>
-                <ConfirmButton title={'OK'}/>
+                <ConfirmButton onPress={handleConfirm} title={'OK'}/>
             </Footer>
         </Container>
     );
